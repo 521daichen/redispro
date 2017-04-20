@@ -9,6 +9,7 @@
 // 或者将你下载的medoo文件拷贝到你相应的目录，然后载入即可
 require_once 'model/medoo.php';
 
+header("Content-Type: text/html; charset=UTF-8");
 
 // 初始化配置
 $database = new medoo(
