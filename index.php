@@ -20,35 +20,21 @@ $listname='daichenlists';
 
 //获取list长度
 $len = $redis->getListLen($listname);
-//
-//$last_user_id = $mysql->insert("account", [
-//    "user_name" => "foo",
-//    "email" => "foo@bar.com",
-//    "age" => 25
-//]);
 
 $mysql->query("INSERT into admins (openid,platenumber,status) VALUES('aaa','sad','1')");
 var_dump($len);
 
-while(True){
-    if($redis->getListSize($listname)>0){
-        //拿出来一个人
-        $info = $redis->rpoplist($listname);
-        //TODO..
-        var_dump($info);
-
-        $mysql->query("INSERT into admins (openid,platenumber,status) VALUES('aaa','sad','1');");
-
+//while(True){
+//    if($redis->getListSize($listname)>0){
+//        //拿出来一个人
+//        $info = $redis->rpoplist($listname);
+//        //TODO..
+//        var_dump($info);
 //
-//        $last_user_id = $mysql->debug()->insert("index",[
-//            'openId'=>'666',
-//            'platenumber'=>'asdasd',
-//            'status'=>0
+//        $mysql->query("INSERT into admins (openid,platenumber,status) VALUES('aaa','sad','1');");
 //
-//        ] );
-
-    }else{
+//    }else{
 //        sleep(1);
-    }
-}
+//    }
+//}
 
