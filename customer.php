@@ -10,9 +10,7 @@ require_once 'mysql.php';
 
 $mysql =mysql_conn();
 
-$data = $mysql->select("platenum", [
-        "LIMIT" => [0,1000]
-  ]
+$data = $mysql->select("platenum", '*'
 );
 
 var_dump($data);
