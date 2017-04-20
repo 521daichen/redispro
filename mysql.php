@@ -19,7 +19,7 @@ class mysqler{
     );
     public $mysql;
     public function __construct(){
-        return $this->mysql=new medoo($this->option);
+        return new medoo($this->option);
     }
 
 }
