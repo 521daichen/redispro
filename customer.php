@@ -15,4 +15,4 @@ $data = $mysql->select("platenum", [
   ]
 );
 
-var_dump($mysql);
+var_dump($data);
