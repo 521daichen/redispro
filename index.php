@@ -6,22 +6,15 @@
 //	echo $value;
 //	$redis->close();
 
-// 或者将你下载的medoo文件拷贝到你相应的目录，然后载入即可
-require_once 'model/medoo.php';
-
+//模拟主程序 处理用户
+require_once 'redis.php';
+require_once 'mysql.php';
 header("Content-Type: text/html; charset=UTF-8");
 
-// 初始化配置
-$database = new medoo(
-array(
-    'database_type' => 'mysql',
-    'database_name' => 'messagequeue',
-    'server' => 'localhost',
-    'username' => 'root',
-    'password' => 'dc1995310',
-    'charset' => 'utf8'
-)
-);
+
+$mysql = new mysqler();
+$redis = new Rediser();
+
 
 $data = $database->query("SELECT * FROM platenum limit 0,100")->fetchAll();
 print_r($data);

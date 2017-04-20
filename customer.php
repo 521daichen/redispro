@@ -9,13 +9,25 @@
 
 require_once 'redis.php';
 
-require_once 'mysql.php';
+//require_once 'mysql.php';
 
 //模拟用户 和redis交互
-$mysql = new mysqler();
+//$mysql = new mysqler();
 
 
-$data = $database->select("platenum", [
+$option = array(
+    'database_type' => 'mysql',
+    'database_name' => 'messagequeue',
+    'server' => 'localhost',
+    'username' => 'root',
+    'password' => 'dc1995310',
+    'charset' => 'utf8'
+);
+
+$mysqler=new medoo($this->option);
+
+
+$data = $mysqler->select("platenum", [
     "LIMIT" => [0, 1000]
 ]);
 
