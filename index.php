@@ -22,7 +22,9 @@ array(
 )
 );
 
-var_dump($database);
+$data = $database->query("SELECT * FROM platenum limit 0,100")->fetchAll();
+print_r($data);
+
 
 //// 插入数据示例
 //$database->insert('account', [
