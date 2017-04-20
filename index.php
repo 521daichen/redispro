@@ -7,17 +7,20 @@
 //	$redis->close();
 
 // 或者将你下载的medoo文件拷贝到你相应的目录，然后载入即可
-require_once './model/medoo.php';
+require_once 'model/medoo.php';
+
 
 // 初始化配置
-$database = new medoo([
+$database = new medoo(
+array(
     'database_type' => 'mysql',
-    'database_name' => 'name',
+    'database_name' => 'messagequeue',
     'server' => 'localhost',
     'username' => 'root',
     'password' => 'dc1995310',
     'charset' => 'utf8'
-]);
+)
+);
 
 var_dump($database);
 
