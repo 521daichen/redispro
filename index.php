@@ -11,10 +11,8 @@ require_once 'redis.php';
 require_once 'mysql.php';
 header("Content-Type: text/html; charset=UTF-8");
 
-
 $mysql = new mysqler();
 $redis = new Rediser();
-
 
 $data = $database->query("SELECT * FROM platenum limit 0,100")->fetchAll();
 print_r($data);

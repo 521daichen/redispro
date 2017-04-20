@@ -15,7 +15,7 @@ function mysql_conn(){
         'password' => 'dc1995310',
         'charset' => 'utf8'
     );
-    $mysql = new medoo($this->option);
+    $mysql = new medoo($option);
     return $mysql;
 }
 
