@@ -14,9 +14,9 @@ require_once 'redis.php';
 require_once 'mysql.php';
 header("Content-Type: text/html; charset=UTF-8");
 
-$redis = new Rediser();
-$mysql=mysql_conn();
-$listname='daichenlists';
+//$redis = new Rediser();
+//$mysql=mysql_conn();
+//$listname='daichenlists';
 //
 ////获取list长度
 //$len = $redis->getListLen($listname);
