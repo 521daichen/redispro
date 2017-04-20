@@ -14,7 +14,7 @@ require_once 'redis.php';
 require_once 'mysql.php';
 header("Content-Type: text/html; charset=UTF-8");
 
-//$redis = new Rediser();
+$redis = new Rediser();
 //$mysql=mysql_conn();
 //$listname='daichenlists';
 //
