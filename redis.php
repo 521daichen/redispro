@@ -7,17 +7,33 @@
  */
 
 class Rediser{
-    public $host='localhost';
-    public $port='6379';
-    public $redis;
+
+    public $redis='';
     public function __construct(){
-        return $this->redis = new Redis($this->host,$this->port);
+        $this->redis = new Redis();
+        $this->redis->connect("localhost","6379");
+        return $this->redis;
     }
-    public function __destruct(){
-        $this->redis->close();
-    }
+//    public function __destruct(){
+//        $this->redis->close();
+//    }
     public function redisPush($listName,$jsonData){
         $this->redis->lPush($listName,$jsonData);
+    }
+
+    public function getListLen($listname=''){
+        $len=$this->redis->lLen($listname);
+        return $len;
+    }
+    //拿到list
+    public function getListSize($listname=''){
+        $lsize = $this->redis->lSize($listname);
+        return $lsize;
+    }
+    public function rpoplist($listname){
+        $info = $this->redis->rPop($listname);
+        $info = json_decode($info,true);
+        return $info;
     }
 }
 

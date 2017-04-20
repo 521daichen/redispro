@@ -7,12 +7,28 @@
  */
 header("Content-Type: text/html; charset=UTF-8");
 require_once 'mysql.php';
+require_once 'redis.php';
 
 $mysql =mysql_conn();
 
-$data = $mysql->select("platenum", [
-        "LIMIT" => [0, 1000],
-    ]
-);
+$redis = new Rediser();
+//获取list长度
+$data=$mysql->select("platenum",'*',[
+    "LIMIT" => [0, 1000]
+]);
 
-var_dump($data);
+for ($i=0;$i<count($data);$i++){
+    //将用户存进redis list中
+    var_dump(json_encode($data[$i]));
+    $res=$redis->redisPush('daichenlists',json_encode($data[$i]));
+    if($res == null){
+
+        echo '入队列成功';
+        echo '<hr />';
+        sleep(1);
+    }
+
+
+}
+
+//var_dump($data);
