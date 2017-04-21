@@ -25,7 +25,7 @@ class Rediser{
         $len=$this->redis->lLen($listname);
         return $len;
     }
-    //拿到list
+    //返回名称为key的list有多少个元素
     public function getListSize($listname=''){
         $lsize = $this->redis->lSize($listname);
         return $lsize;
@@ -34,6 +34,12 @@ class Rediser{
         $info = $this->redis->rPop($listname);
         $info = json_decode($info,true);
         return $info;
+    }
+
+    public function getQueNum($listname,$end=''){
+        $queNumData = $this->redis->lRange($listname,0,$end);
+        $queNum = $this->getListSize($queNumData);
+        return $queNum;
     }
 }
 

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+
+<div>
+    <p>当前排队人数为 <span id="queuenum"></span></p>
+    <p>已经处理人数 <span id="delnum"></span></p>
+</div>
+
+<script>
+    $(document).ready(function () {
+        window.setInterval(function () {
+
+                $.get("getqueue.php", function(data){
+                    res= JSON.parse(data)
+                    console.log(res);
+                    $("#queuenum").html(res.num);
+                    $("#delnum").html(res.del);
+                });
+
+        },1000);
+    })
+
+
+</script>
+
+</body>
+</html>

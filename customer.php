@@ -14,7 +14,7 @@ $mysql =mysql_conn();
 $redis = new Rediser();
 //获取list长度
 $data=$mysql->select("platenum",'*',[
-    "LIMIT" => [0, 1000]
+    "LIMIT" => [0, 30000]
 ]);
 
 for ($i=0;$i<count($data);$i++){
@@ -25,10 +25,8 @@ for ($i=0;$i<count($data);$i++){
 
         echo '入队列成功';
         echo '<hr />';
-        sleep(1);
+        sleep(0.1);
     }
-
-
 }
 
 //var_dump($data);
