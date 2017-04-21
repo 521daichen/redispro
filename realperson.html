@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+
+<div id="content" style="display: none">
+    <p>挤爆了！！！</p>
+    <p>当前排队人数为 <span id="queuenum"></span></p>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+                $.get("realperson.php", function(data){
+
+                    status = data.status;
+                    if(status == 1){
+                        //无需排队直接跳转
+                        window.location.href="htt://www.baidu.com/";
+                    }else{
+                        res= JSON.parse(data);
+                        console.log(res);
+                        $("#content").css('display','block');
+                        $("#queuenum").text(res.myque);
+                    }
+                    //成功回调
+//                    getNowQueue(res.myque);
+                });
+
+    })
+//    function getNowQueue() {
+//        window.setInterval(function () {
+//            //
+//            $.get("getnowqueue.php", function(data){
+//                res= JSON.parse(data);
+//                console.log(res);
+//                $("#queuenum").html(res.myque);
+//                //成功回调
+//                getNowQueue(res.myque);
+//            });
+//        },1000)
+//    }
+</script>
+
+</body>
+</html>
